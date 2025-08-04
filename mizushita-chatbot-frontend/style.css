@@ -4,165 +4,237 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* グラデーション背景 */
+    background: linear-gradient(135deg, #8a2be2 0%, #4b0082 100%); /* 紫のグラデーションを強調 */
     margin: 0;
     color: #333;
 }
 
 .chat-container {
-    width: 400px;
-    height: 600px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 650px; /* さらに大きく */
+    height: 850px; /* さらに大きく */
+    background-color: rgba(255, 255, 255, 0.95); /* 透明度を少し上げて背景を見せる */
+    border-radius: 20px; /* 角丸を強調 */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* 影を強調 */
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    border: 2px solid #8a2be2; /* 紫の枠線を追加 */
 }
 
 .chat-header {
-    background-color: #4a2a80; /* AI水下らしい色 */
+    background-color: #6a0dad; /* より濃い紫 */
     color: #fff;
-    padding: 15px;
+    padding: 20px; /* パディングを大きく */
     text-align: center;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* 擬似要素のために追加 */
+    overflow: hidden; /* 擬似要素がはみ出さないように */
+    flex-shrink: 0; /* ヘッダが縮まないようにする */
+}
+
+.chat-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+    transform: rotate(45deg);
+    animation: header-shine 5s infinite linear;
+}
+
+@keyframes header-shine {
+    0% { transform: rotate(45deg) translate(-50%, -50%); }
+    100% { transform: rotate(45deg) translate(50%, 50%); }
 }
 
 .chat-header h1 {
     margin: 0;
-    font-size: 1.5em;
+    font-size: 2.2em; /* さらに大きく */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 15px rgba(255, 255, 255, 0.7); /* 影を強調 */
+    animation: neon-glow 1.5s ease-in-out infinite alternate;
+    position: relative; /* z-indexのために追加 */
+    z-index: 1; /* 擬似要素より手前に */
+}
+
+@keyframes neon-glow {
+    from {
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 15px rgba(255, 255, 255, 0.7);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.9), 0 0 45px rgba(255, 255, 255, 0.8);
+    }
 }
 
 .chat-header p {
-    margin: 5px 0 0;
-    font-size: 0.9em;
-    opacity: 0.8;
+    margin: 8px 0 0;
+    font-size: 1.2em; /* さらに大きく */
+    opacity: 0.95;
+    position: relative; /* z-indexのために追加 */
+    z-index: 1; /* 擬似要素より手前に */
 }
 
 .chat-box {
     flex-grow: 1;
-    padding: 15px;
+    padding: 20px; /* パディングを大きく */
     overflow-y: auto;
-    background-color: #f9f9f9;
+    background-color: #fefefe;
 }
 
 /* スクロールバーのカスタマイズ */
 .chat-box::-webkit-scrollbar {
-    width: 8px;
+    width: 12px; /* 幅を大きく */
 }
 
 .chat-box::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #e0b0ff; /* 紫系の色 */
     border-radius: 10px;
 }
 
 .chat-box::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #8a2be2; /* 紫系の色 */
     border-radius: 10px;
 }
 
 .chat-box::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #6a0dad;
 }
 
 .message-wrapper {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 15px;
+    margin-bottom: 25px; /* マージンを大きく */
 }
 
 .ai-avatar {
-    width: 45px;
-    height: 45px;
+    width: 70px; /* アバターをさらに大きく */
+    height: 70px; /* アバターをさらに大きく */
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 20px; /* マージンを大きく */
     object-fit: cover;
-    border: 2px solid #764ba2;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 4px solid #8a2be2; /* 紫の枠線を強調 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .message {
-    padding: 12px 18px;
-    border-radius: 20px;
-    max-width: calc(80% - 55px); /* アバターの幅とマージンを考慮 */
+    padding: 18px 25px; /* パディングを大きく */
+    border-radius: 30px; /* 角丸を強調 */
+    max-width: calc(85% - 90px); /* アバターの幅とマージンを考慮して調整 */
     position: relative;
     word-wrap: break-word;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    font-size: 1.2em; /* フォントサイズを大きく */
 }
 
 .user-message {
-    background-color: #007bff;
+    background-color: #4b0082; /* 濃い紫 */
     color: #fff;
     margin-left: auto;
-    border-bottom-right-radius: 5px; /* 吹き出しのしっぽ側を少し角ばらせる */
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
+    border-bottom-right-radius: 10px; /* 吹き出しのしっぽ側を少し角ばらせる */
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
 }
 
 .ai-message {
-    background-color: #e2e2e2;
+    background-color: #e0b0ff; /* 明るい紫 */
     color: #333;
-    border-bottom-left-radius: 5px; /* 吹き出しのしっぽ側を少し角ばらせる */
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top-right-radius: 20px;
+    border-bottom-left-radius: 10px; /* 吹き出しのしっぽ側を少し角ばらせる */
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 /* 吹き出しのしっぽ */
 .ai-message::before {
     content: '';
     position: absolute;
-    left: -8px;
-    top: 8px;
+    left: -12px; /* 位置を調整 */
+    top: 12px; /* 位置を調整 */
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 8px 8px 8px 0;
-    border-color: transparent #e2e2e2 transparent transparent;
+    border-width: 12px 12px 12px 0; /* サイズを大きく */
+    border-color: transparent #e0b0ff transparent transparent;
 }
 
 .user-message::after {
     content: '';
     position: absolute;
-    right: -8px;
-    top: 8px;
+    right: -12px; /* 位置を調整 */
+    top: 12px; /* 位置を調整 */
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 8px 0 8px 8px;
-    border-color: transparent transparent transparent #007bff;
+    border-width: 12px 0 12px 12px; /* サイズを大きく */
+    border-color: transparent transparent transparent #4b0082;
 }
 
 .input-area {
     display: flex;
     border-top: 1px solid #eee;
     background-color: #fff;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     overflow: hidden;
+    flex-shrink: 0;
+    padding: 10px; /* パディングを追加 */
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1); /* 影を強調 */
+}
+
+#toggle-search-button {
+    width: 150px; /* 幅を調整 */
+    background-color: #8a2be2; /* AI水下らしい色 */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em; /* フォントサイズを調整 */
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    border-radius: 10px;
+    margin-right: 10px; /* 入力欄との間隔 */
+}
+
+#toggle-search-button:hover {
+    background-color: #6a0dad;
+    transform: translateY(-2px);
+}
+
+#toggle-search-button:active {
+    transform: translateY(0);
+    background-color: #4b0082;
 }
 
 #user-input {
     flex-grow: 1;
-    padding: 15px;
+    padding: 18px; /* パディングを大きく */
     border: none;
     outline: none;
-    font-size: 1em;
+    font-size: 1.2em; /* フォントサイズを大きく */
+    background-color: #f0f0f0; /* 入力欄の背景色 */
+    border-radius: 10px; /* 角丸を追加 */
+    margin-right: 10px; /* ボタンとの間隔 */
 }
 
 #send-button {
-    width: 100px;
-    background-color: #764ba2; /* AI水下らしい色 */
+    width: 130px; /* 幅を大きく */
+    background-color: #8a2be2; /* より鮮やかな紫 */
     color: #fff;
     border: none;
     cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.2s ease;
+    font-size: 1.2em; /* フォントサイズを大きく */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* ホバーとクリックアニメーション */
+    border-radius: 10px; /* 角丸を追加 */
 }
 
 #send-button:hover {
-    background-color: #663a92;
+    background-color: #6a0dad;
+    transform: translateY(-2px); /* 少し浮き上がる */
+}
+
+#send-button:active {
+    transform: translateY(0); /* 押し込む */
+    background-color: #4b0082;
 }
