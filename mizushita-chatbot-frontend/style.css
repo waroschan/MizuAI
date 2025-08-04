@@ -26,8 +26,8 @@ body {
     color: #fff;
     padding: 20px; /* パディングを大きく */
     text-align: center;
-    border-top-left-radius: 18px;
-    border-top-right-radius: 18px;
+    /* border-top-left-radius: 20px; */ /* 削除 */
+    /* border-top-right-radius: 20px; */ /* 削除 */
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     position: relative; /* 擬似要素のために追加 */
     overflow: hidden; /* 擬似要素がはみ出さないように */
@@ -290,18 +290,24 @@ body {
     }
 
     .input-area {
+        flex-wrap: wrap; /* 折り返しを許可 */
+        justify-content: center; /* 中央寄せ */
         padding: 8px;
     }
 
     #toggle-search-button {
-        width: 120px;
+        width: 100%; /* 幅を100%に */
+        margin-bottom: 8px; /* 下にマージン */
         font-size: 1em;
         padding: 10px;
     }
 
     #user-input {
+        flex-grow: 1;
         padding: 15px;
         font-size: 1em;
+        width: calc(100% - 110px); /* ボタンの幅を考慮 */
+        margin-right: 8px; /* ボタンとの間隔 */
     }
 
     #send-button {
