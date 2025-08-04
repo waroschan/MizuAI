@@ -238,3 +238,75 @@ body {
     transform: translateY(0); /* 押し込む */
     background-color: #4b0082;
 }
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .chat-container {
+        width: 95%; /* 幅を画面の95%に */
+        height: 95vh; /* 高さを画面の95%に */
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .chat-header {
+        padding: 15px;
+    }
+
+    .chat-header h1 {
+        font-size: 1.8em;
+    }
+
+    .chat-header p {
+        font-size: 1em;
+    }
+
+    .chat-box {
+        padding: 10px;
+    }
+
+    .ai-avatar {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .message {
+        padding: 12px 18px;
+        border-radius: 20px;
+        max-width: calc(80% - 60px);
+        font-size: 1em;
+    }
+
+    .ai-message::before,
+    .user-message::after {
+        border-width: 8px 8px 8px 0;
+        left: -8px;
+        top: 8px;
+    }
+
+    .user-message::after {
+        border-width: 8px 0 8px 8px;
+        right: -8px;
+    }
+
+    .input-area {
+        padding: 8px;
+    }
+
+    #toggle-search-button {
+        width: 120px;
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    #user-input {
+        padding: 15px;
+        font-size: 1em;
+    }
+
+    #send-button {
+        width: 100px;
+        font-size: 1em;
+        padding: 10px;
+    }
+}
